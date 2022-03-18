@@ -1,0 +1,73 @@
+import org.gradle.internal.jvm.Jvm
+
+buildscript {
+    ext.kotlin_version = '1.6.10'
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.8.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:10.2.1"
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:5.12.1"
+    }
+}
+
+println "Gradle uses Java ${Jvm.current()}"
+
+subprojects {
+    apply plugin: "org.jlleitschuh.gradle.ktlint"
+
+    // Optionally configure plugin
+    ktlint {
+        debug = false
+    }
+}
+
+allprojects {
+    group = 'info.hannes.documentscanner'
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven {
+            url 'https://artifactory.mxtracks.info/artifactory/gradle-dev-local/'
+
+//            def artifactoryPW = project.hasProperty("artifactory_password") ? artifactory_password : System.getenv("ARTIFACTORY_USER_PASSWORD")
+//            if (artifactoryPW == null) {
+//                out.style(Style.Normal).text("Artifactory has no password eiter you add in gradle.properties ")
+//                        .style(Style.Failure).text(" artifactory_password=<your secret>")
+//                out.style(Style.Normal).text(" or specify an envirionment variable ")
+//                        .style(Style.Failure).text("export ARTIFACTORY_USER_PASSWORD=<your secret>")
+//            } else
+//                out.style(Style.Normal).text("Artifactory password >${artifactoryPW.take(1)}..<")
+//
+//            credentials {
+//                username = project.hasProperty("artifactory_user") ? project.artifactory_user : System.getenv("ARTIFACTORY_USER_NAME")
+//                password = artifactoryPW
+//            }
+        }
+    }
+}
+
+@SuppressWarnings("unused")
+static def getGitCommitCount() {
+    def process = "git rev-list HEAD --count".execute()
+    return process.text.toInteger()
+}
+
+@SuppressWarnings("unused")
+static def getTag() {
+    def process = "git describe --tags".execute()
+    return process.text.toString().trim()
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

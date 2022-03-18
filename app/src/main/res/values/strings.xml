@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Live Edge Detection Sample</string>
+    <string name="show_pdf">Show PDF</string>
+    <string name="rotate">Rotate</string>
+</resources>
