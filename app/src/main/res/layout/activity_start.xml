@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".StartActivity">
+
+    <Button
+        android:id="@+id/buttonScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="scan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/buttonLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="logcat"
+        app:layout_constraintStart_toStartOf="@+id/buttonScan"
+        app:layout_constraintTop_toBottomOf="@+id/buttonScan"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textAppVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="monospace"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/buttonLog"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLog"
+        tools:text="version" />
+
+    <TextView
+        android:id="@+id/textOpenCVVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="monospace"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/textAppVersion"
+        app:layout_constraintTop_toBottomOf="@+id/textAppVersion"
+        tools:text="OpenCV version" />
+
+    <TextView
+        android:id="@+id/textBuildType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="monospace"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/textOpenCVVersion"
+        app:layout_constraintTop_toBottomOf="@+id/textOpenCVVersion"
+        tools:text="BuildType" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
