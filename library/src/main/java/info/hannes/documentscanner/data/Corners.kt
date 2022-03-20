@@ -6,7 +6,6 @@ import org.opencv.core.Size
 
 data class Corners(val points: List<Point>, val size: Size) {
     fun log() {
-
         Log.d(
             javaClass.simpleName,
             "size: ${size.width}x${size.height} - tl: ${tl.x}, ${tl.y} - tr: ${tr.x}, ${tr.y} - br: ${br.x}, ${br.y} - bl: ${bl.x}, ${bl.y}"

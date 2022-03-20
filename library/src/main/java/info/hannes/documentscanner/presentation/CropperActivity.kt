@@ -33,9 +33,8 @@ class CropperActivity : AppCompatActivity() {
         binding = ActivityCropperBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val extras = intent.extras
-        if (extras != null) {
-            bitmapUri = intent.extras?.getString("lastUri")?.toUri() ?: error("invalid uri")
+        intent.extras?.let {
+            bitmapUri = it.getString("lastUri")?.toUri() ?: error("invalid uri")
         }
 
         val cropModel: CropperModel by viewModels()
