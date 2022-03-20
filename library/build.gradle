@@ -65,13 +65,13 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
 }
 
-//spotless {
-//    kotlin {
-//        target "**/*.kt"
-//        // EditorConfig support is broken: https://github.com/diffplug/spotless/issues/142
-//        ktlint("0.35.0").userData(["disabled_rules": "no-wildcard-imports,import-ordering,chain-wrapping"])
-//    }
-//}
+spotless {
+    kotlin {
+        target "**/*.kt"
+        // EditorConfig support is broken: https://github.com/diffplug/spotless/issues/142
+        ktlint("0.35.0").userData(["disabled_rules": "no-wildcard-imports,import-ordering,chain-wrapping"])
+    }
+}
 
 task sourceJar(type: Jar) {
     from android.sourceSets.main.kotlin.srcDirs
