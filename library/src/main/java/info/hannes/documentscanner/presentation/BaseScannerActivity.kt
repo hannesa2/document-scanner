@@ -73,7 +73,7 @@ abstract class BaseScannerActivity : AppCompatActivity() {
 
         viewModel.errors.observe(this) {
             onError(it)
-            Log.e(ScannerActivity::class.java.simpleName, it.message, it)
+            Log.e(this::class.java.simpleName, it.message, it)
         }
 
         viewModel.corners.observe(this) {

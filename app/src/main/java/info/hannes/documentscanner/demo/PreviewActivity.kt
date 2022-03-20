@@ -1,5 +1,7 @@
 package info.hannes.documentscanner.demo
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
@@ -10,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.snackbar.Snackbar
 import info.hannes.documentscanner.demo.databinding.ActivityPreviewBinding
-import info.hannes.documentscanner.presentation.ScannerActivity
 import info.hannes.github.AppUpdateHelper
 
 class PreviewActivity : AppCompatActivity() {
@@ -40,12 +41,12 @@ class PreviewActivity : AppCompatActivity() {
         startActivityForResult(intent, REQUEST_CODE)
     }
 
-//    @SuppressLint("SetTextI18n")
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == REQUEST_CODE) {
-//            if (resultCode == Activity.RESULT_OK) {
-//                data?.extras?.let { bundle ->
+    @SuppressLint("SetTextI18n")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == Activity.RESULT_OK) {
+                data?.extras?.let { bundle ->
 //                    filePath = bundle.getString(ScannerActivity.SCANNED_RESULT)
 //                    filePath?.let {
 //                        val baseBitmap = it.decodeBitmapFromFile()
@@ -57,14 +58,14 @@ class PreviewActivity : AppCompatActivity() {
 //
 //                        showSnackbar(it)
 //                        Timber.i(it)
-//                    }
-//
-//                }
-//            } else if (resultCode == Activity.RESULT_CANCELED) {
-//                finish()
-//            }
-//        }
-//
+                }
+
+            }
+        } else if (resultCode == Activity.RESULT_CANCELED) {
+            finish()
+        }
+    }
+
 //        binding.buttonOpenExtern.setOnClickListener {
 //            externalCacheDir?.let { path ->
 //                filePath?.let { file ->
@@ -81,7 +82,6 @@ class PreviewActivity : AppCompatActivity() {
 //                this.storeBitmap(baseBitmap, File(it))
 //            }
 //        }
-//    }
 
     private fun showSnackbar(text: String) {
         var viewPos: View? = findViewById(R.id.coordinatorLayout)
