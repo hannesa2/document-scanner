@@ -131,7 +131,7 @@ class ScannerViewModel : ViewModel() {
 
         val executor: Executor = ContextCompat.getMainExecutor(lifecycleOwner)
         controller = LifecycleCameraController(lifecycleOwner)
-        controller.setImageAnalysisAnalyzer(executor, { proxy: ImageProxy ->
+        controller.setImageAnalysisAnalyzer(executor) { proxy: ImageProxy ->
             // could not find a performing way to transform
             // the proxy to a bitmap, so we are reading
             // the bitmap directly from the preview view
@@ -144,7 +144,7 @@ class ScannerViewModel : ViewModel() {
                 corners.value = null
                 proxy.close()
             }
-        })
+        }
         controller.imageAnalysisBackpressureStrategy = ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST
         controller.setEnabledUseCases(IMAGE_CAPTURE or IMAGE_ANALYSIS)
 
