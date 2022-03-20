@@ -49,35 +49,35 @@ abstract class BaseScannerActivity : AppCompatActivity() {
 
         val viewModel: ScannerViewModel by viewModels()
 
-        viewModel.isBusy.observe(this, { isBusy ->
+        viewModel.isBusy.observe(this) { isBusy ->
             binding.progress.visibility = if (isBusy) {
                 View.VISIBLE
             } else {
                 View.INVISIBLE
             }
-        })
+        }
 
-        viewModel.lastUri.observe(this, {
+        viewModel.lastUri.observe(this) {
             val intent = Intent(this, CropperActivity::class.java)
             intent.putExtra("lastUri", it.toString())
 
             resultLauncher.launch(intent)
-        })
+        }
 
-        viewModel.errors.observe(this, {
+        viewModel.errors.observe(this) {
             onError(it)
             Log.e(ScannerActivity::class.java.simpleName, it.message, it)
-        })
+        }
 
-        viewModel.corners.observe(this, {
+        viewModel.corners.observe(this) {
             it?.let { corners ->
                 binding.hud.onCornersDetected(corners)
             } ?: run {
                 binding.hud.onCornersNotDetected()
             }
-        })
+        }
 
-        viewModel.flashStatus.observe(this, { status ->
+        viewModel.flashStatus.observe(this) { status ->
             binding.flashToggle.setImageResource(
                 when (status) {
                     FlashStatus.ON -> R.drawable.ic_flash_on
@@ -85,7 +85,7 @@ abstract class BaseScannerActivity : AppCompatActivity() {
                     else -> R.drawable.ic_flash_off
                 }
             )
-        })
+        }
 
         binding.flashToggle.setOnClickListener {
             viewModel.onFlashToggle()
