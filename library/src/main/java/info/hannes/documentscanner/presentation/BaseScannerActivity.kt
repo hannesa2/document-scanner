@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -21,6 +20,7 @@ import info.hannes.documentscanner.data.OpenCVLoader
 import info.hannes.documentscanner.databinding.ActivityScannerBinding
 import info.hannes.documentscanner.extensions.outputDirectory
 import info.hannes.documentscanner.extensions.triggerFullscreen
+import timber.log.Timber
 import java.io.File
 
 abstract class BaseScannerActivity : AppCompatActivity() {
@@ -73,7 +73,7 @@ abstract class BaseScannerActivity : AppCompatActivity() {
 
         viewModel.errors.observe(this) {
             onError(it)
-            Log.e(ScannerActivity::class.java.simpleName, it.message, it)
+            Timber.e(it.message, it)
         }
 
         viewModel.corners.observe(this) {
