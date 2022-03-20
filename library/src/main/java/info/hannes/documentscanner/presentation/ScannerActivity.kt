@@ -8,8 +8,7 @@ import info.hannes.documentscanner.exceptions.NullCorners
 class ScannerActivity : BaseScannerActivity() {
     override fun onError(throwable: Throwable) {
         when (throwable) {
-            is NullCorners -> Toast.makeText(                this,                R.string.null_corners, Toast.LENGTH_LONG            )
-                .show()
+            is NullCorners -> Toast.makeText(this, R.string.null_corners, Toast.LENGTH_LONG).show()
             else -> Toast.makeText(this, throwable.message, Toast.LENGTH_LONG).show()
         }
     }
