@@ -1,5 +1,6 @@
 [![](https://jitpack.io/v/hannesa2/document-scanner.svg)](https://jitpack.io/#hannesa2/document-scanner)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![example branch parameter](https://github.com/hannesa2/document-scanner/actions/workflows/Android-CI-Espresso.yml/badge.svg?branch=master)
 
 # Android Document Scanner
 Contains an activity that allows the user to scan a A4 paper with the smartphone camera.
