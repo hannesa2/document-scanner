@@ -30,7 +30,7 @@ class CropperModel : ViewModel() {
             it.fold(::handleFailure) { preview ->
                 analyze(preview, returnOriginalMat = true) { pair ->
                     pair.second?.let {
-                        original.value = pair.first
+                        original.value = pair.first!!
                         corners.value = pair.second
                     }
                 }
@@ -70,5 +70,5 @@ class CropperModel : ViewModel() {
         }
     }
 
-    private fun handleFailure(failure: Failure) { }
+    private fun handleFailure(failure: Failure) = Unit
 }

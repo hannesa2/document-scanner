@@ -41,7 +41,7 @@ class CropperActivity : AppCompatActivity() {
         val cropModel: CropperModel by viewModels()
 
         // Picture taken from User
-        cropModel.original.observe(this, {
+        cropModel.original.observe(this) {
             binding.cropPreview.setImageBitmap(cropModel.original.value)
             binding.cropWrap.visibility = View.VISIBLE
 
@@ -53,11 +53,11 @@ class CropperActivity : AppCompatActivity() {
                     width = binding.cropPreview.measuredWidth
                 )
             }
-        })
+        }
 
-        cropModel.bitmapToCrop.observe(this, {
+        cropModel.bitmapToCrop.observe(this) {
             binding.cropResultPreview.setImageBitmap(cropModel.bitmapToCrop.value)
-        })
+        }
 
         binding.closeResultPreview.setOnClickListener {
             closeActivity()
