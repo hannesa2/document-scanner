@@ -42,18 +42,18 @@ jobs:
           abi: x86
           cmdOptions: -noaudio -no-boot-anim -no-window
       - name: Archive Espresso results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: DocumentScanner-Espresso-report
           path: app/build/reports/androidTests/connected
       - name: Save logcat output
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v3
         if: failure()
         with:
           name: DocumentScanner-logcat
           path: artifacts/logcat.log
       - name: Archive screenshots
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: DocumentScanner-Screenshots
           path: screenshots/adb
@@ -78,7 +78,7 @@ jobs:
       - name: Code checks
         run: ./gradlew lint
       - name: Archive Lint report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
           name: DocumentScanner-Lint-report
