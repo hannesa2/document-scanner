@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import info.hannes.documentscanner.demo.databinding.ActivityStartBinding
-import info.hannes.logcat.BothLogActivity
+import info.hannes.logcat.ui.BothLogActivity
 
 class StartActivity : AppCompatActivity() {
 
