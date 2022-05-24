@@ -26,13 +26,6 @@
             android:name="info.hannes.documentscanner.demo.PreviewActivity"
             android:exported="true" />
 
-        <activity
-            android:name="info.hannes.logcat.BothLogActivity"
-            android:exported="true"
-            android:label="Log LiveEdge"
-            android:theme="@style/DetailTheme"
-            tools:replace="android:label" />
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
