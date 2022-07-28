@@ -4,21 +4,16 @@ apply plugin: "com.diffplug.spotless"
 apply plugin: "maven-publish"
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
 
     defaultConfig {
 
         minSdkVersion 23
-        targetSdkVersion 31
+        targetSdkVersion 32
         versionCode project.property("version_code").toInteger()
         versionName project.property("version_name") as String
     }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
@@ -38,7 +33,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "androidx.core:core-ktx:1.7.0"
+    implementation "androidx.core:core-ktx:1.8.0"
     implementation "androidx.appcompat:appcompat:1.4.2"
     api "OpenCV_all_together_samples:opencv:4.5.5.0"
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
