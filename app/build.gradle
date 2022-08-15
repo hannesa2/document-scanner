@@ -104,7 +104,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.4.0'
     implementation project(':library')
-    implementation 'com.github.hannesa2:githubAppUpdate:1.4'
+    implementation 'com.github.hannesa2:githubAppUpdate:1.5'
     implementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:2.11.3'
     implementation 'com.github.AppDevNext.Logcat:LogcatCoreUI:2.11.3'
 
