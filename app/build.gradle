@@ -10,12 +10,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "info.hannes.documentscanner.demo"
         minSdkVersion 23
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode getGitCommitCount()
         versionName getTag()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
