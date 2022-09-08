@@ -4,12 +4,12 @@ apply plugin: "com.diffplug.spotless"
 apply plugin: "maven-publish"
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     defaultConfig {
 
         minSdkVersion 23
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode project.property("version_code").toInteger()
         versionName project.property("version_name") as String
     }
