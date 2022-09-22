@@ -44,7 +44,7 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.5.2"
 
     // CameraX core library using camera2 implementation
-    implementation "androidx.camera:camera-camera2:1.2.0-beta01"
+    implementation "androidx.camera:camera-camera2:1.2.0-beta02"
     implementation "androidx.camera:camera-lifecycle:1.2.0-beta01"
     implementation "androidx.camera:camera-view:1.2.0-beta02"
 
