@@ -10,8 +10,6 @@ android {
 
         minSdkVersion 23
         targetSdkVersion 33
-        versionCode project.property("version_code").toInteger()
-        versionName project.property("version_name") as String
     }
 
     kotlinOptions {
@@ -28,6 +26,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'info.hannes.documentscanner'
 }
 
 dependencies {
