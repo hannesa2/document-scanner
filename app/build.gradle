@@ -74,6 +74,7 @@ android {
             versionNameSuffix ".debug"
         }
     }
+    namespace 'info.hannes.documentscanner.demo'
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
