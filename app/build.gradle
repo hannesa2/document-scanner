@@ -19,6 +19,8 @@ android {
         versionCode getGitCommitCount()
         versionName getTag()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments useTestStorageService: 'true'
+
         buildConfigField "String", 'GIT_REPOSITORY', "\"" + getGitOriginRemote() + "\""
     }
 
@@ -99,14 +101,14 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
 
-    androidTestImplementation 'com.github.AppDevNext:Moka:1.5'
-    androidTestImplementation "androidx.test.ext:junit:1.1.4"
-    androidTestImplementation 'androidx.test:runner:1.5.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.0'
+    androidTestImplementation "androidx.test.ext:junit-ktx:1.1.4"
+    androidTestUtil "androidx.test.services:test-services:1.4.2"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.5.0"
+    androidTestImplementation "androidx.test:rules:1.5.0" //    GrantPermissionRule
+
     implementation project(':library')
     implementation 'com.github.hannesa2:githubAppUpdate:1.6'
-    implementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:2.11.3'
+    releaseImplementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:2.11.3'
     implementation 'com.github.AppDevNext.Logcat:LogcatCoreUI:2.11.3'
 
     implementation "androidx.core:core-ktx:1.9.0"
