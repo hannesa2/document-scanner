@@ -14,7 +14,6 @@ import info.hannes.documentscanner.presentation.ScannerActivity
 import info.hannes.github.AppUpdateHelper
 
 class PreviewActivity : AppCompatActivity() {
-    private var filePath: String? = null
     private lateinit var binding: ActivityPreviewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +26,7 @@ class PreviewActivity : AppCompatActivity() {
 
         AppUpdateHelper.checkForNewVersion(
             this,
-            BuildConfig.GIT_REPOSITORY,
-            BuildConfig.VERSION_NAME
+            BuildConfig.GIT_REPOSITORY
         )
     }
 
