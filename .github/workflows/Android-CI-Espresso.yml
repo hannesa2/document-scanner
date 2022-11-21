@@ -41,17 +41,21 @@ jobs:
           tag: default
           abi: x86
           cmdOptions: -noaudio -no-boot-anim -no-window
-      - name: Archive Espresso results
-        uses: actions/upload-artifact@v3
-        if-no-files-found: error
-        with:
-          name: DocumentScanner-Espresso-report
-          path: app/build/reports/androidTests/connected
       - name: Archive screenshots
-        uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: DocumentScanner-Screenshots
-          path: screenshots/adb
+          if-no-files-found: error
+          path: |
+            app/build/outputs/connected_android_test_additional_output/debugAndroidTest/connected
+            app/build/outputs/androidTest-results/connected
+      - name: Archive Espresso results
+        uses: actions/upload-artifact@v3
+        with:
+          if-no-files-found: error
+          name: DocumentScanner-Espresso-report
+          path: app/build/reports/androidTests/connected
   Check:
     name: Check
     runs-on: macOS-latest
@@ -76,5 +80,6 @@ jobs:
         uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
+          if-no-files-found: error
           name: DocumentScanner-Lint-report
-          path: app/build/reports/lint-results.html
+          path: app/build/reports/lint-results*.html
