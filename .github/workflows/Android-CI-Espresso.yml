@@ -26,7 +26,7 @@ jobs:
           distribution: 'adopt'
           java-version: ${{ matrix.java_version }}
       - name: Install Android SDK
-        uses: malinskiy/action-android/install-sdk@release/0.1.2
+        uses: malinskiy/action-android/install-sdk@release/0.1.4
       - name: Debug keystore
         run: keytool -genkey -v -keystore app/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "C=US, O=Android, CN=Android Debug"
       - name: Build project
@@ -34,7 +34,7 @@ jobs:
       - name: Run tests
         run: ./gradlew test
       - name: Run instrumentation tests
-        uses: malinskiy/action-android/emulator-run-cmd@release/0.1.2
+        uses: malinskiy/action-android/emulator-run-cmd@release/0.1.4
         with:
           cmd: ./gradlew cAT
           api: 28
@@ -43,15 +43,10 @@ jobs:
           cmdOptions: -noaudio -no-boot-anim -no-window
       - name: Archive Espresso results
         uses: actions/upload-artifact@v3
+        if-no-files-found: error
         with:
           name: DocumentScanner-Espresso-report
           path: app/build/reports/androidTests/connected
-      - name: Save logcat output
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: DocumentScanner-logcat
-          path: artifacts/logcat.log
       - name: Archive screenshots
         uses: actions/upload-artifact@v3
         with:
