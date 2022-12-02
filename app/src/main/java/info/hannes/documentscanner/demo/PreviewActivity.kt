@@ -11,7 +11,6 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.snackbar.Snackbar
 import info.hannes.documentscanner.demo.databinding.ActivityPreviewBinding
 import info.hannes.documentscanner.presentation.ScannerActivity
-import info.hannes.github.AppUpdateHelper
 
 class PreviewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPreviewBinding
@@ -23,11 +22,6 @@ class PreviewActivity : AppCompatActivity() {
         setContentView(view)
 
         startScan()
-
-        AppUpdateHelper.checkForNewVersion(
-            this,
-            BuildConfig.GIT_REPOSITORY
-        )
     }
 
     private fun startScan() {
