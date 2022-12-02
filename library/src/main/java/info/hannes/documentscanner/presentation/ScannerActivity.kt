@@ -13,8 +13,7 @@ class ScannerActivity : BaseScannerActivity() {
         }
     }
 
-    override fun onDocumentAccepted(bitmap: Bitmap) {
-    }
+    override fun onDocumentAccepted(bitmap: Bitmap) = Unit
 
     override fun onClose() {
         finish()

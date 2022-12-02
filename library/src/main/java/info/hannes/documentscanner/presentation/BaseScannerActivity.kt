@@ -32,8 +32,7 @@ abstract class BaseScannerActivity : AppCompatActivity() {
     private val resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                val bitmapUri =
-                    result.data?.extras?.getString("croppedPath") ?: error("invalid path")
+                val bitmapUri = result.data?.extras?.getString("croppedPath") ?: error("invalid path")
 
                 val image = File(bitmapUri)
                 val bmOptions = BitmapFactory.Options()
