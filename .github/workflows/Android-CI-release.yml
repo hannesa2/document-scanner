@@ -36,7 +36,7 @@ jobs:
         env:
           CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
       - name: Build project
-        run: ./gradlew clean assembleRelease
+        run: ./gradlew assembleRelease
         env:
           CRYPT_PASS: ${{ secrets.CRYPT_PASS }}
           KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
@@ -44,28 +44,13 @@ jobs:
           ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
       - name: cleanup keystore
         run: ./signing/cleanup.sh
-      - name: Search for apk file
-        run: echo "APK_RELASE_FILE=$(find . -name *release.apk | head -n 1)" >> $GITHUB_ENV
-      - name: Search for APK release name
-        run: echo "APK_RELASE_NAME=$(find . -name *release.apk | head -n 1 | xargs basename)" >> $GITHUB_ENV
+
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{steps.tagger.outputs.tag}}
-          release_name: Release ${{steps.tagger.outputs.tag}}
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
+          name: ${{steps.tagger.outputs.tag}}
+          generate_release_notes: true
+          files: ./app/build/outputs/apk/release/DocumentScanner*-release.apk
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUBTOKEN }}
-          APK_RELASE: ${{ secrets.CRYPT_PASS }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ${{ env.APK_RELASE_FILE }}
-          asset_name: ${{ env.APK_RELASE_NAME }}
-          asset_content_type: application/zip
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

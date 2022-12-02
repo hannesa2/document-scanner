@@ -85,7 +85,7 @@ android {
                 def vName = variant.versionName
                 def vCode = variant.versionCode
                 // def flavor = variant.flavorName
-                def newName = "LiveEdgeDetection"
+                def newName = "DocumentScanner"
                 newName += "-${vName}-${vCode}-${builtType}.apk"
                 outputFileName = newName
             }

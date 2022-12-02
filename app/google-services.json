@@ -1,9 +1,9 @@
 {
   "project_info": {
     "project_number": "1234",
-    "firebase_url": "https://liveedgedetection.firebaseio.com",
-    "project_id": "liveedgedetection",
-    "storage_bucket": "liveedgedetection.appspot.com"
+    "firebase_url": "https://DocScanner.firebaseio.com",
+    "project_id": "DocScanner",
+    "storage_bucket": "DocScanner.appspot.com"
   },
   "client": [
     {
