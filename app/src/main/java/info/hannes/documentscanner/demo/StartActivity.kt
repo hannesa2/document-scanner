@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import info.hannes.documentscanner.demo.databinding.ActivityStartBinding
+import info.hannes.github.AppUpdateHelper
 import info.hannes.logcat.ui.BothLogActivity
 
 class StartActivity : AppCompatActivity() {
@@ -25,6 +26,11 @@ class StartActivity : AppCompatActivity() {
         binding.textBuildType.text = "BuildType     : ${BuildConfig.BUILD_TYPE}"
         binding.textAppVersion.text = "App version   : ${BuildConfig.VERSION_NAME}"
         binding.textOpenCVVersion.text = "OpenCV version: ${org.opencv.BuildConfig.VERSION_NAME}"
+
+        AppUpdateHelper.checkForNewVersion(
+            this,
+            BuildConfig.GIT_REPOSITORY
+        )
     }
 
 }
