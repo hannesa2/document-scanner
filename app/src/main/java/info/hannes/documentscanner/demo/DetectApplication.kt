@@ -23,6 +23,5 @@ class DetectApplication : Application() {
             Timber.plant(FileLoggingTree(it, this))
         }
 
-        Crashlytic.init(applicationContext.contentResolver)
     }
 }

@@ -5,8 +5,6 @@ import static org.gradle.internal.logging.text.StyledTextOutput.Style
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.google.gms.google-services'
-    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -108,7 +106,6 @@ dependencies {
 
     implementation project(':library')
     implementation 'com.github.hannesa2:githubAppUpdate:1.6'
-    releaseImplementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:2.11.3'
     implementation 'com.github.AppDevNext.Logcat:LogcatCoreUI:2.11.3'
 
     implementation "androidx.core:core-ktx:1.9.0"
@@ -155,5 +152,3 @@ task decryptPrivate {
 }
 
 clean.dependsOn decryptPrivate
-
-apply plugin: 'com.google.gms.google-services'
