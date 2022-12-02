@@ -22,7 +22,7 @@ import info.hannes.documentscanner.data.Corners
 import info.hannes.documentscanner.data.OpenCVLoader
 import info.hannes.documentscanner.data.OpenCvStatus
 import info.hannes.documentscanner.domain.Failure
-import info.hannes.documentscanner.domain.FindPaperSheetContours
+import info.hannes.documentscanner.domain.FindPaperSheetContoursUseCase
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -51,7 +51,7 @@ class ScannerViewModel : ViewModel() {
     /**
      * Use cases
      */
-    private val findPaperSheetUseCase: FindPaperSheetContours = FindPaperSheetContours()
+    private val findPaperSheetUseCase: FindPaperSheetContoursUseCase = FindPaperSheetContoursUseCase()
 
     /**
      * Tries to load OpenCv native libraries
@@ -172,7 +172,7 @@ class ScannerViewModel : ViewModel() {
         returnOriginalMat: Boolean = false,
         callback: ((Pair<Bitmap, Corners?>) -> Unit)? = null
     ) {
-        findPaperSheetUseCase(FindPaperSheetContours.Params(bitmap, returnOriginalMat)) {
+        findPaperSheetUseCase(FindPaperSheetContoursUseCase.Params(bitmap, returnOriginalMat)) {
             it.fold(::handleFailure) { pair: Pair<Bitmap, Corners?> ->
                 callback?.invoke(pair) ?: run {
                     corners.value = pair.second

@@ -12,7 +12,7 @@ import org.opencv.core.MatOfPoint
 import org.opencv.core.Size
 import org.opencv.imgproc.Imgproc
 
-class FindPaperSheetContours : UseCase<Pair<Bitmap, Corners?>, FindPaperSheetContours.Params>() {
+class FindPaperSheetContoursUseCase : UseCase<Pair<Bitmap, Corners?>, FindPaperSheetContoursUseCase.Params>() {
     class Params(
         val bitmap: Bitmap,
         val returnOriginalMat: Boolean = false

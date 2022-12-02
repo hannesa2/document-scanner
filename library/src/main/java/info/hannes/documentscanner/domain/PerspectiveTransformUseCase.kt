@@ -21,7 +21,7 @@ import kotlin.math.sqrt
  * crops the corners from the image and transforms the shape represented by the corners
  * into a rectangle
  */
-class PerspectiveTransform : UseCase<Bitmap, PerspectiveTransform.Params>() {
+class PerspectiveTransformUseCase : UseCase<Bitmap, PerspectiveTransformUseCase.Params>() {
 
     class Params(val bitmap: Bitmap, val corners: Corners)
 

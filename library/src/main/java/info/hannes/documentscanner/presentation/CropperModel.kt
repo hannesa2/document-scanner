@@ -7,13 +7,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import info.hannes.documentscanner.data.Corners
 import info.hannes.documentscanner.domain.Failure
-import info.hannes.documentscanner.domain.FindPaperSheetContours
-import info.hannes.documentscanner.domain.PerspectiveTransform
+import info.hannes.documentscanner.domain.FindPaperSheetContoursUseCase
+import info.hannes.documentscanner.domain.PerspectiveTransformUseCase
 import info.hannes.documentscanner.domain.UriToBitmap
 
 class CropperModel : ViewModel() {
-    private val perspectiveTransform: PerspectiveTransform = PerspectiveTransform()
-    private val findPaperSheetUseCase: FindPaperSheetContours = FindPaperSheetContours()
+    private val perspectiveTransform: PerspectiveTransformUseCase = PerspectiveTransformUseCase()
+    private val findPaperSheetUseCase: FindPaperSheetContoursUseCase = FindPaperSheetContoursUseCase()
     private val uriToBitmap: UriToBitmap = UriToBitmap()
 
     val corners = MutableLiveData<Corners?>()
@@ -40,7 +40,7 @@ class CropperModel : ViewModel() {
 
     fun onCornersAccepted(bitmap: Bitmap) {
         perspectiveTransform(
-                PerspectiveTransform.Params(
+                PerspectiveTransformUseCase.Params(
                     bitmap = bitmap,
                     corners = corners.value!!
                 )
@@ -58,7 +58,7 @@ class CropperModel : ViewModel() {
         callback: ((Pair<Bitmap, Corners?>) -> Unit)? = null
     ) {
         findPaperSheetUseCase(
-            FindPaperSheetContours.Params(
+            FindPaperSheetContoursUseCase.Params(
                 bitmap,
                 returnOriginalMat
             )
