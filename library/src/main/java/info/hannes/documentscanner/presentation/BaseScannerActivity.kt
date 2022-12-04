@@ -50,7 +50,6 @@ abstract class BaseScannerActivity : AppCompatActivity() {
         triggerFullscreen()
 
         binding = ActivityScannerBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
 
         val viewModel: ScannerViewModel by viewModels()
@@ -66,7 +65,6 @@ abstract class BaseScannerActivity : AppCompatActivity() {
         viewModel.lastUri.observe(this) {
             val intent = Intent(this, CropperActivity::class.java)
             intent.putExtra("lastUri", it.toString())
-
             resultLauncher.launch(intent)
         }
 
@@ -158,8 +156,7 @@ abstract class BaseScannerActivity : AppCompatActivity() {
         when (requestCode) {
             PERMISSIONS_REQUEST_CAMERA -> onRequestCamera(grantResults)
             PERMISSIONS_REQUEST_EXTERNAL_STORAGE -> onRequestExternalStorage(grantResults)
-            else -> {
-            }
+            else -> Unit
         }
     }
 
