@@ -107,7 +107,7 @@ dependencies {
     androidTestImplementation "androidx.test:rules:1.5.0" //    GrantPermissionRule
 
     implementation project(':library')
-    implementation 'com.github.hannesa2:githubAppUpdate:2.0-beta1'
+    implementation 'com.github.hannesa2:githubAppUpdate:2.0-beta2'
     releaseImplementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:2.11.3'
     implementation 'com.github.AppDevNext.Logcat:LogcatCoreUI:2.11.3'
 
