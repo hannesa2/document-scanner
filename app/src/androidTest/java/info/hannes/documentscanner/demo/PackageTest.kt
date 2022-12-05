@@ -12,6 +12,6 @@ class PackageTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        Assert.assertEquals("info.hannes.documentscanner.demo.debug", appContext.packageName)
+        Assert.assertEquals("info.hannes.documentscanner.demo", appContext.packageName)
     }
 }

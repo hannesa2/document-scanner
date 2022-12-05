@@ -1,6 +1,7 @@
 *.iml
 .gradle
 local.properties
+release.keystore
 
 .idea/*
 !.idea/codeStyles/
