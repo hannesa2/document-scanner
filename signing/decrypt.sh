@@ -24,7 +24,7 @@ pushd signing
 # https://askubuntu.com/questions/1067762/unable-to-decrypt-text-files-with-openssl-on-ubuntu-18-04/1076708
 echo "decrypt release.keystore"
 openssl aes-256-cbc -d -salt -pbkdf2 -k "$CRYPT_PASS" -in release.keystore.enc -out release.keystore
-echo "decrypt google-services.json"
+echo "decrypt ../app/google-services.json"
 openssl aes-256-cbc -d -salt -pbkdf2 -k "$CRYPT_PASS" -in ../app/google-services.json.enc -out ../app/google-services.json
 
 popd 1>/dev/null
