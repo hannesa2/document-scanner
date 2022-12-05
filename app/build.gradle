@@ -130,6 +130,7 @@ static def getLatestGitHash() {
 
 task decryptPrivate {
     def out = services.get(StyledTextOutputFactory).create("")
+    def sout = new StringBuilder(), serr = new StringBuilder()
 
     def pass = "$System.env.CRYPT_PASS"
     if (pass == "null") {
@@ -144,13 +145,18 @@ task decryptPrivate {
                 .style(Style.Info).println(' DECRYPTED')
         println ""
 
-        def process = "pwd".execute()
-        println "pwd=" + process.text.toString().trim()
-        println "projectDir=$projectDir"
-        println ""
-
         def processDecrypt = "$projectDir/../signing/decrypt.sh".execute()
-        processDecrypt.waitForProcessOutput(System.out, System.err)
+        processDecrypt.waitForProcessOutput(sout, serr)
+
+        if (serr.toString() != "")
+            out.style(Style.Failure).text("Error ")
+                    .style(Style.Normal).text("decrypt ")
+                    .style(Style.Description).println(serr)
+        else {
+            out.style(Style.SuccessHeader).text("OK ")
+                    .style(Style.Normal).text("decrypt ")
+                    .style(Style.Description).println(sout)
+        }
     }
 }
 
