@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-pwd
-
 if [[ -z "$CRYPT_PASS" ]]
 then
    read -sp 'Password: ' CRYPT_PASS
@@ -13,6 +11,8 @@ then
 else
    echo "\$CRYPT_PASS available"
 fi
+
+openssl version
 
 pushd signing
 
