@@ -3,6 +3,9 @@ package info.hannes.documentscanner.demo
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import info.hannes.documentscanner.demo.databinding.ActivityStartBinding
 import info.hannes.github.AppUpdateHelper
@@ -22,6 +25,10 @@ class StartActivity : AppCompatActivity() {
 
         binding.buttonScan.setOnClickListener { startActivity(Intent(this, PreviewActivity::class.java)) }
         binding.buttonLog.setOnClickListener { startActivity(Intent(this, BothLogActivity::class.java)) }
+        binding.buttonCrash.setOnClickListener {
+            Toast.makeText(this, "force crash ${info.hannes.logcat.BuildConfig.VERSIONNAME}", Toast.LENGTH_SHORT).show()
+            Handler(Looper.getMainLooper()).postDelayed({ throw RuntimeException("Test Crash ${info.hannes.logcat.BuildConfig.VERSIONNAME}") }, 3000)
+        }
 
         binding.textBuildType.text = "BuildType     : ${BuildConfig.BUILD_TYPE}"
         binding.textAppVersion.text = "App version   : ${BuildConfig.VERSION_NAME}"
