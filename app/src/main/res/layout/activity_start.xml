@@ -27,6 +27,16 @@
         tools:ignore="HardcodedText" />
 
     <Button
+        android:id="@+id/buttonUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/fab_margin"
+        android:text="App update"
+        app:layout_constraintStart_toEndOf="@+id/buttonLog"
+        app:layout_constraintTop_toTopOf="@+id/buttonScan"
+        tools:ignore="HardcodedText" />
+
+    <Button
         android:id="@+id/buttonCrash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
