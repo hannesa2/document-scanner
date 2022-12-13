@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/fab_margin"
-        android:text="App update"
+        android:text="Settings"
         app:layout_constraintStart_toEndOf="@+id/buttonUpdate"
         app:layout_constraintTop_toTopOf="@+id/buttonScan"
         tools:ignore="HardcodedText" />
