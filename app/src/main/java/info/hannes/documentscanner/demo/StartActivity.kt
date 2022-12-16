@@ -29,6 +29,9 @@ class StartActivity : AppCompatActivity() {
             Toast.makeText(this, "force crash ${info.hannes.logcat.BuildConfig.VERSIONNAME}", Toast.LENGTH_SHORT).show()
             Handler(Looper.getMainLooper()).postDelayed({ throw RuntimeException("Test Crash ${info.hannes.logcat.BuildConfig.VERSIONNAME}") }, 3000)
         }
+        binding.buttonUpdate.setOnClickListener {
+            AppUpdateHelper.checkWithDialog(this, BuildConfig.GIT_REPOSITORY, force = true)
+        }
 
         binding.textBuildType.text = "BuildType     : ${BuildConfig.BUILD_TYPE}"
         binding.textAppVersion.text = "App version   : ${BuildConfig.VERSION_NAME}"
