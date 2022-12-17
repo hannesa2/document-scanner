@@ -2,9 +2,12 @@ package info.hannes.documentscanner.demo
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import info.hannes.documentscanner.demo.databinding.ActivityStartBinding
@@ -32,6 +35,16 @@ class StartActivity : AppCompatActivity() {
         binding.buttonUpdate.setOnClickListener {
             AppUpdateHelper.checkWithDialog(this, BuildConfig.GIT_REPOSITORY, force = true)
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            binding.buttonSetting.setOnClickListener {
+                val settingsIntent: Intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    .putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+                    .putExtra(Settings.EXTRA_CHANNEL_ID, "channelAppUpdate")
+                startActivity(settingsIntent)
+            }
+        } else
+            binding.buttonSetting.visibility = View.GONE
 
         binding.textBuildType.text = "BuildType     : ${BuildConfig.BUILD_TYPE}"
         binding.textAppVersion.text = "App version   : ${BuildConfig.VERSION_NAME}"
