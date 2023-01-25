@@ -48,7 +48,7 @@ dependencies {
 
     // zoomable image view
     implementation "com.github.chrisbanes:PhotoView:2.3.0"
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     implementation 'com.github.AppDevNext.Logcat:LogcatCoreUI:2.12'
