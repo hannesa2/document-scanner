@@ -116,7 +116,7 @@ dependencies {
     releaseImplementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:2.12'
     implementation 'com.github.AppDevNext.Logcat:LogcatCoreUI:2.12'
 
-    implementation "androidx.core:core-ktx:1.10.0"
+    implementation "androidx.core:core-ktx:1.10.1"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
