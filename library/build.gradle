@@ -3,12 +3,12 @@ apply plugin: "kotlin-android"
 apply plugin: "maven-publish"
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     defaultConfig {
 
         minSdkVersion 23
-        targetSdkVersion 33
+        targetSdkVersion 34
     }
 
     kotlinOptions {
