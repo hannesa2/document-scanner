@@ -121,21 +121,21 @@ class PaperRectangle : View {
         invalidate()
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas?.drawPath(path, fillPaint)
-        canvas?.drawPath(path, rectPaint)
+        canvas.drawPath(path, fillPaint)
+        canvas.drawPath(path, rectPaint)
 
         if (cropMode) {
-            canvas?.drawCircle(tl.x.toFloat(), tl.y.toFloat(), 40F, extCirclePaint)
-            canvas?.drawCircle(tr.x.toFloat(), tr.y.toFloat(), 40F, extCirclePaint)
-            canvas?.drawCircle(bl.x.toFloat(), bl.y.toFloat(), 40F, extCirclePaint)
-            canvas?.drawCircle(br.x.toFloat(), br.y.toFloat(), 40F, extCirclePaint)
+            canvas.drawCircle(tl.x.toFloat(), tl.y.toFloat(), 40F, extCirclePaint)
+            canvas.drawCircle(tr.x.toFloat(), tr.y.toFloat(), 40F, extCirclePaint)
+            canvas.drawCircle(bl.x.toFloat(), bl.y.toFloat(), 40F, extCirclePaint)
+            canvas.drawCircle(br.x.toFloat(), br.y.toFloat(), 40F, extCirclePaint)
 
-            canvas?.drawCircle(tl.x.toFloat(), tl.y.toFloat(), 35F, intCirclePaint)
-            canvas?.drawCircle(tr.x.toFloat(), tr.y.toFloat(), 35F, intCirclePaint)
-            canvas?.drawCircle(bl.x.toFloat(), bl.y.toFloat(), 35F, intCirclePaint)
-            canvas?.drawCircle(br.x.toFloat(), br.y.toFloat(), 35F, intCirclePaint)
+            canvas.drawCircle(tl.x.toFloat(), tl.y.toFloat(), 35F, intCirclePaint)
+            canvas.drawCircle(tr.x.toFloat(), tr.y.toFloat(), 35F, intCirclePaint)
+            canvas.drawCircle(bl.x.toFloat(), bl.y.toFloat(), 35F, intCirclePaint)
+            canvas.drawCircle(br.x.toFloat(), br.y.toFloat(), 35F, intCirclePaint)
         }
     }
 
@@ -149,6 +149,7 @@ class PaperRectangle : View {
                 latestDownY = event.y
                 calculatePoint2Move(event.x, event.y)
             }
+
             MotionEvent.ACTION_MOVE -> {
                 point2Move.x = (event.x - latestDownX) + point2Move.x
                 point2Move.y = (event.y - latestDownY) + point2Move.y
