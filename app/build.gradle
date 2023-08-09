@@ -113,7 +113,7 @@ dependencies {
 
     implementation project(':library')
     implementation 'com.github.hannesa2:githubAppUpdate:2.0'
-    releaseImplementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:2.12'
+    releaseImplementation 'com.github.AppDevNext.Logcat:LogcatCrashlyticLib:3.0'
     implementation 'com.github.AppDevNext.Logcat:LogcatCoreUI:2.12'
 
     implementation "androidx.core:core-ktx:1.10.1"
