@@ -25,7 +25,7 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: ${{ matrix.java_version }}
-      - uses: gradle/wrapper-validation-action@v2.0.0
+      - uses: gradle/wrapper-validation-action@v3.3.1
       - name: Install Android SDK
         uses: malinskiy/action-android/install-sdk@release/0.1.4
       - name: Debug keystore
