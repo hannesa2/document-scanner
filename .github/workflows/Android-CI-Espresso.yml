@@ -5,13 +5,11 @@ on:
     branches:
       - master
   pull_request:
-    branches:
-      - master
 
 jobs:
   buildTest:
     name: Build & Test JDK ${{ matrix.java_version }}
-    runs-on: macOS-latest
+    runs-on: ARM64
     strategy:
       matrix:
         java_version: [ 17 ]
@@ -40,12 +38,12 @@ jobs:
       - name: Run tests
         run: ./gradlew test
       - name: Run instrumentation tests
-        uses: malinskiy/action-android/emulator-run-cmd@release/0.1.4
+        uses: hannesa2/action-android/emulator-run-cmd@0.1.4.10
         with:
           cmd: ./gradlew cAT
-          api: 28
-          tag: default
-          abi: x86
+          api: 34
+          tag: 'google_apis'
+          abi: arm64-v8a
           cmdOptions: -noaudio -no-boot-anim -no-window
       - name: Archive screenshots
         if: ${{ always() }}
