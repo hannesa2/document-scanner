@@ -10,10 +10,11 @@ on:
 
 jobs:
   buildTest:
-    name: Build & Test JDK ${{ matrix.java_version }}
-    runs-on: macOS-13
+    name: Build & Test
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [ macOS-13 ]
         java_version: [ 17 ]
     steps:
       - name: Checkout
@@ -64,9 +65,10 @@ jobs:
           path: app/build/reports/androidTests/connected
   Check:
     name: Check
-    runs-on: macOS-14
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [ macOS-14 ]
         java_version: [ 17 ]
     steps:
       - name: Checkout
