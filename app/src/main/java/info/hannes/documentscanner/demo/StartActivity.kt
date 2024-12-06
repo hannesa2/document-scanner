@@ -43,8 +43,9 @@ class StartActivity : AppCompatActivity() {
                     .putExtra(Settings.EXTRA_CHANNEL_ID, "channelAppUpdate")
                 startActivity(settingsIntent)
             }
-        } else
+        } else {
             binding.buttonSetting.visibility = View.GONE
+        }
 
         binding.textBuildType.text = "BuildType     : ${BuildConfig.BUILD_TYPE}"
         binding.textAppVersion.text = "App version   : ${BuildConfig.VERSION_NAME}"
