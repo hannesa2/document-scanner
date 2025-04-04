@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ macOS-13 ]
+        os: [ ARM64 ]
         java_version: [ 17 ]
     steps:
       - name: Checkout
@@ -39,12 +39,12 @@ jobs:
       - name: Run tests
         run: ./gradlew test
       - name: Run instrumentation tests
-        uses: malinskiy/action-android/emulator-run-cmd@release/0.1.4
+        uses: hannesa2/action-android/emulator-run-cmd@0.1.4.10
         with:
           cmd: ./gradlew cAT
-          api: 28
-          tag: default
-          abi: x86
+          api: 34
+          tag: 'google_apis'
+          abi: arm64-v8a
           cmdOptions: -noaudio -no-boot-anim -no-window -metrics-to-console
       - name: Archive screenshots
         if: ${{ always() }}
