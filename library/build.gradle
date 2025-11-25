@@ -38,8 +38,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:1.7.0"
     api "OpenCV_all_together_samples:opencv:4.7.0.0"
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7"
-    api "androidx.lifecycle:lifecycle-livedata-ktx:2.8.6"
-    api "androidx.lifecycle:lifecycle-runtime-ktx:2.8.6"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.9.4"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:2.9.4"
 
     implementation "androidx.activity:activity-ktx:1.9.3"
     implementation "androidx.fragment:fragment-ktx:1.8.5"
