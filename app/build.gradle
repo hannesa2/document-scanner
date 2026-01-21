@@ -34,24 +34,12 @@ android {
 
     signingConfigs {
         def out = services.get(StyledTextOutputFactory).create("")
-        if (System.env.USER == "hannes") {
-            release {
-                def keystore = "${project.gradle.gradleUserHomeDir}/../.android/debug.keystore"
-                out.style(Style.Normal).text("I run with user hannes using ")
-                        .style(Style.SuccessHeader).println(keystore)
-                storePassword "android"
-                keyPassword "android"
-                keyAlias "androiddebugkey"
-                storeFile file(keystore)
-            }
-        } else {
-            release {
-                out.style(Style.Normal).text("I run on Github actions")
-                storeFile file('../signing/release.keystore')
-                storePassword System.getenv("KEYSTORE_PASS")
-                keyAlias System.getenv("ALIAS_NAME")
-                keyPassword System.getenv("ALIAS_PASS")
-            }
+        release {
+            out.style(Style.Normal).text("I run on Github actions")
+            storeFile file('../signing/release.keystore')
+            storePassword System.getenv("KEYSTORE_PASS")
+            keyAlias System.getenv("ALIAS_NAME")
+            keyPassword System.getenv("ALIAS_PASS")
         }
         debugCI {
             storeFile file('./debug.keystore')
